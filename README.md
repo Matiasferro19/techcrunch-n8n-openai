@@ -54,17 +54,17 @@ Procesa el contenido con IA:
 ## 🖼️ Screenshots
 
 ### 🧩 Workflow completo en n8n
-_(Agregar imagen: `Workflow.png`)_
+![Workflow](screenshots/Workflow.png)
 
 ### 🧠 Prompt utilizado en IA
-_(Agregar imagen: `PromptIA1.png`)_
+![Prompt](screenshots/PromptIA1.png)
 
 ### 🤖 Modelo utilizado (GPT-5 mini)
-_(Agregar imagen: `ModeloIA.png`)_
+![Modelo](screenshots/ModeloIA.png)
 
 ### ✉️ Email generado (con link clickeable)
-_(Agregar imagen: `Email.png`)_
+![Email](screenshots/Email.png)
 
 ### 🌐 Noticia original en TechCrunch
-_(Agregar imagen: `NoticiaWeb.png`)_
+![Noticia](screenshots/NoticiaWeb.png)
 
