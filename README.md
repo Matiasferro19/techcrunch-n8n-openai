@@ -2,6 +2,8 @@
 
 Este workflow de n8n obtiene las últimas noticias desde TechCrunch Latest, las traduce al español mediante IA, genera un newsletter en HTML y lo envía automáticamente por email.
 
+--
+
 🛠️ Tecnologías
 
 n8n
@@ -13,6 +15,8 @@ Scraping / Request HTTP
 HTML para emails
 
 Gmail API
+
+--
 
 🔧 Nodos del Workflow
 ⏰ Disparador de horario
@@ -70,6 +74,14 @@ Ejecutar el workflow.
 🧠 Prompt utilizado en IA
 
 🤖 Modelo de IA (GPT-5 mini)
+
+✉️ Email generado (con link clickeable)
+
+🌐 Noticia original en TechCrunch
+
+🧠 Prompt utilizado en IA
+
+🤖 Modelo utilizado (GPT-5 mini)
 
 ✉️ Email generado (con link clickeable)
 
