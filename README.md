@@ -1,105 +1,76 @@
-📰 Newsletter Automático con n8n + IA
+📰 Newsletter Automático de Noticias TechCrunch con n8n + IA
 
-Automatización completa que obtiene noticias de TechCrunch, las traduce, resume y envía un newsletter limpio y moderno usando n8n + OpenAI.
+Este workflow de n8n obtiene las últimas noticias desde TechCrunch Latest, las traduce al español mediante IA, genera un newsletter en HTML y lo envía automáticamente por email.
 
-⚙️ Flujo del proceso
-1️⃣ Schedule Trigger (Disparador de horario)
+🛠️ Tecnologías
 
-Activa el flujo automáticamente en el horario configurado.
+n8n
 
-2️⃣ HTTP Request – TechCrunch Latest
+OpenAI (GPT-5 mini)
 
-Obtiene las últimas noticias desde:
-https://techcrunch.com/latest
+Scraping / Request HTTP
 
-3️⃣ AI Agent – Modelo GPT-5 mini
-
-El modelo realiza:
-
-Traducción al español
-
-Resumen del contenido
-
-Generación de HTML ordenado
-
-Preservación de enlaces clickeables
-
-4️⃣ Formato de fecha
-
-Se genera la fecha actual ({{$now}}) para mostrarla en el encabezado del email.
-
-5️⃣ Render del Email en HTML
-
-Inserta el contenido generado por IA dentro de un diseño HTML personalizado con título, fecha y estilo.
-
-6️⃣ Gmail Node – Envío automático
-
-Envía el newsletter final a la casilla configurada.
-
-🧠 Modelo de IA utilizado
-
-Se utilizó GPT-5 mini, integrado mediante el nodo OpenAI Model en n8n.
-
-Funciones configuradas:
-
-Traducción
-
-Resumen
-
-Generación HTML
-
-Enlaces preservados
-
-📌 Screenshot del modelo utilizado:
-
-
-📸 Screenshots
-🔧 1. Workflow completo
-
-![Workflow](screenshots/Workflow.png)
-
-🧠 2. Prompt utilizado para la IA
-
-🤖 3. Configuración del modelo GPT-5 mini
-
-✉️ 4. Email generado (con links clickeables)
-
-🌐 5. Noticia original en TechCrunch
-
-📌 Nota sobre las fechas
-
-La fecha del email es la del envío.
-
-Las fechas de cada noticia provienen del sitio original (TechCrunch).
-
-Esto es completamente normal y mantiene la integridad del contenido.
-
-🛠️ Tecnologías utilizadas
-
-n8n (automatización del flujo)
-
-OpenAI – GPT-5 mini
-
-HTML inline para emails
+HTML para emails
 
 Gmail API
 
-HTTP Scraping / API de TechCrunch
+🔧 Nodos del Workflow
+⏰ Disparador de horario
 
-🎯 Objetivo del proyecto
+Activa el flujo automáticamente en el horario configurado.
 
-Este workflow sirve como:
+🌐 HTTP Request a TechCrunch Latest
 
-Proyecto de portfolio
+Realiza un request GET a:
+https://techcrunch.com/latest
 
-Ejemplo real de automatización
+Extrae títulos, descripciones y enlaces de cada noticia.
 
-Caso práctico de IA aplicada
+🤖 AI Agent (OpenAI – GPT-5 mini)
 
-Integración de APIs
+Procesa el contenido con IA:
 
-Envío automático de newsletters
+Traduce las noticias al español
 
-📁 Export del workflow
+Resume información clave
 
-El archivo workflow.json está incluido en este repositorio para importarlo directamente en n8n.
+Genera HTML limpio
+
+Mantiene los enlaces clickeables
+
+Produce un bloque final HTML para el email
+
+🗓️ Formato de fecha (Function / Set)
+
+Genera la fecha actual con:
+{{$now}}
+Esto se muestra en el encabezado del newsletter.
+
+📨 Render del email en HTML
+
+Inserta el contenido generado por IA dentro de una plantilla HTML con título, fecha, secciones y estilos inline.
+
+📬 Gmail Node – Envío del newsletter
+
+Envía automáticamente el newsletter al correo configurado.
+
+📦 Cómo usarlo
+
+Importar workflow.json en tu instancia de n8n.
+
+Configurar las credenciales de OpenAI y Gmail.
+
+Ajustar el horario del disparador si lo necesitás.
+
+Ejecutar el workflow.
+
+🖼️ Screenshots
+🧩 Workflow completo en n8n
+
+🧠 Prompt utilizado en IA
+
+🤖 Modelo de IA (GPT-5 mini)
+
+✉️ Email generado (con link clickeable)
+
+🌐 Noticia original en TechCrunch
