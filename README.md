@@ -44,7 +44,7 @@ Procesa el contenido con IA:
 ---
 
 ## 📦 Cómo usarlo
-1. Importar `workflow.json` en tu instancia de n8n.  
+1. Importar `WorkflowNoticias.json` en tu instancia de n8n.  
 2. Configurar las credenciales de **OpenAI** y **Gmail**.  
 3. Ajustar el horario del disparador si lo necesitás.  
 4. Ejecutar el workflow.
