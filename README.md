@@ -56,7 +56,11 @@ Preservación de enlaces
 
 🤖 3. Modelo utilizado (GPT-5 mini)
 
+![ModeloIA](screenshots/ModeloIA.png)
+
 ✉️ 4. Email generado (con link clickeable)
+
+
 
 🌐 5. Noticia en TechCrunch (original)
 
