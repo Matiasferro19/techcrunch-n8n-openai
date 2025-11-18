@@ -11,7 +11,7 @@ Este workflow de **n8n** obtiene las últimas noticias desde **TechCrunch Latest
 - HTML para emails
 - Gmail API
 
-  ⚠️ Nota: Las noticias se obtienen mediante scraping del HTML de TechCrunch, no mediante API oficial.
+⚠️ Nota: Las noticias se obtienen mediante scraping del HTML de TechCrunch, no mediante API oficial.
 
 ---
 
