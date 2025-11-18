@@ -47,6 +47,8 @@ Preservación de enlaces
 📸 Screenshots
 🔧 1. Workflow completo
 
+![Workflow](screenshots/Workflow.png)
+
 🧠 2. Prompt utilizado en IA
 
 
@@ -58,7 +60,7 @@ Preservación de enlaces
 
 🌐 5. Noticia en TechCrunch (original)
 
-![Noticia TechCrunch](./Noticia - Web.png)
+
 
 📌 Nota sobre las fechas
 
