@@ -62,7 +62,7 @@ Procesa el contenido con IA:
 ### 🤖 Modelo utilizado (GPT-5 mini)
 ![Modelo](screenshots/ModeloIA.png)
 
-### ✉️ Email generado (con link clickeable)
+### ✉️ Email generado (con links clickeable)
 ![Email](screenshots/Email.png)
 
 ### 🌐 Noticia original en TechCrunch
