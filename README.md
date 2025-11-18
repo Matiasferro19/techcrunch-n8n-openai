@@ -60,11 +60,11 @@ Preservación de enlaces
 
 ✉️ 4. Email generado (con link clickeable)
 
-
+![Email](screenshots/Email.png)
 
 🌐 5. Noticia en TechCrunch (original)
 
-
+![Noticia](screenshots/Noticia-Web.png)
 
 📌 Nota sobre las fechas
 
