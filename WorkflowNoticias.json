@@ -1,0 +1,290 @@
+{
+  "name": "Noticias para traducir y enviar",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Tu objetivo es traducir las noticias de latest news. Proporcionadas en este objeto {{ $json.data }}\n\nDebes devolver un listado html ordenado, donde cada título sea un link clickeable a su URL original.\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -688,
+        -256
+      ],
+      "id": "e5e7b74d-f7b6-41f2-8812-35ad57508759",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1360,
+        -176
+      ],
+      "id": "a05483d4-0ece-4f6b-b24a-1ddaf49538a2",
+      "name": "Disparador de horario"
+    },
+    {
+      "parameters": {
+        "url": "https://techcrunch.com/latest/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1104,
+        -336
+      ],
+      "id": "b72df086-cb1a-46dc-b96d-c74d2d9c8d91",
+      "name": "Obtener noticias"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -928,
+        -32
+      ],
+      "id": "9586126d-df2f-4952-bad6-aec5f80ada9d",
+      "name": "GPT-5 mini - traducir y generar HTML",
+      "credentials": {
+        "openAiApi": {
+          "id": "Avp696GqBvXnJ4fm",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        -48
+      ],
+      "id": "7b2db282-99d7-437c-bcc0-4fccb07ab809",
+      "name": "Procesar contenido"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTimeTool",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        -48
+      ],
+      "id": "6ee2aa11-62c2-4a4f-9f8a-e42d9989b0e0",
+      "name": "Obtener fecha y hora"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -288,
+        -256
+      ],
+      "id": "b64883e3-fc66-400c-8598-d7f8df39534e",
+      "name": "Fecha y hora para email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a50c3db7-9aa3-4e70-88bb-c908a2611ddd",
+              "name": "formattedDate",
+              "value": "={{ new Date($json.currentDate).toLocaleDateString('es-AR') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -16,
+        -320
+      ],
+      "id": "7df6579b-2536-4a9d-972b-dfc0c21654ed",
+      "name": "Formatear fecha"
+    },
+    {
+      "parameters": {
+        "sendTo": "matias.ferro19@gmail.com",
+        "subject": "Últimas noticias de tecnología - TechCrunch",
+        "message": "=<!-- Contenedor principal -->\n<div style=\"font-family: Arial, sans-serif; background-color: #ffffff; padding: 20px; color: #333333; max-width: 600px; margin: auto; border-radius: 8px; border: 1px solid #dddddd;\">\n\n  <!-- Título con emoji -->\n  <h1 style=\"text-align: center; font-size: 28px; color: #1a73e8; margin-bottom: 5px;\">\n    Últimas noticias de Tecnologia - TechCrunch 💻\n  </h1>\n\n  <!-- Fecha -->\n  <p style=\"text-align: center; font-weight: bold; color: #555555; margin-bottom: 20px;\">\n    {{ $json.formattedDate }}\n  </p>\n\n  <!-- Contenido del AI Agent -->\n  <div style=\"font-size: 16px; line-height: 1.5; color: #444444;\">\n    {{ $('AI Agent').item.json.output }}\n  </div>\n\n  <!-- Pie de página -->\n  <p style=\"text-align: center; font-size: 12px; color: #999999; margin-top: 30px;\">\n    Este correo fue generado automáticamente con n8n.\n  </p>\n</div>\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        -224
+      ],
+      "id": "b26af932-dec4-4f02-b523-3444c3bf05e7",
+      "name": "Enviar noticias por mail",
+      "webhookId": "320e2ba0-b188-4327-876f-35dc56dd2c09",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7MdOekL0ZZDIad6i",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "21455029-9075-4584-810c-6f4639ba64f8",
+      "name": "Calculadora"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Fecha y hora para email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disparador de horario": {
+      "main": [
+        [
+          {
+            "node": "Obtener noticias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener noticias": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT-5 mini - traducir y generar HTML": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar contenido": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener fecha y hora": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fecha y hora para email": {
+      "main": [
+        [
+          {
+            "node": "Formatear fecha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatear fecha": {
+      "main": [
+        [
+          {
+            "node": "Enviar noticias por mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar noticias por mail": {
+      "main": [
+        []
+      ]
+    },
+    "Calculadora": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dbd95e97-b506-4ece-9fb6-ba2106bc07e3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bdd18a8c77a2987c9a10ababb0a93dc460f07fc3a09303972e6073d297628cf5"
+  },
+  "id": "Df4jpMtooe0Igide",
+  "tags": []
+}
