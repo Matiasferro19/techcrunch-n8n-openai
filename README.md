@@ -64,7 +64,7 @@ Preservación de enlaces
 
 🌐 5. Noticia en TechCrunch (original)
 
-![Noticia](screenshots/Noticia-Web.png)
+
 
 📌 Nota sobre las fechas
 
