@@ -2,7 +2,7 @@
 
 Este workflow de n8n obtiene las últimas noticias desde TechCrunch Latest, las traduce al español mediante IA, genera un newsletter en HTML y lo envía automáticamente por email.
 
---
+***
 
 🛠️ Tecnologías
 
@@ -16,7 +16,7 @@ HTML para emails
 
 Gmail API
 
---
+***
 
 🔧 Nodos del Workflow
 ⏰ Disparador de horario
