@@ -51,7 +51,7 @@ Preservación de enlaces
 
 🧠 2. Prompt utilizado en IA
 
-
+![Prompt](screenshots/PromptIA1.png)
 
 
 🤖 3. Modelo utilizado (GPT-5 mini)
