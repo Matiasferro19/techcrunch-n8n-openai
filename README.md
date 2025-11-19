@@ -38,7 +38,7 @@ Procesa el contenido con IA:
 - Esto se muestra en el encabezado del newsletter.
 
 ### 📨 Render del email en HTML
-- Inserta el contenido generado por IA dentro de una plantilla HTML con título, links a la url de la noticia.
+- Inserta el contenido generado por IA dentro de una plantilla HTML con título, links a la URL de la noticia.
 
 ### 📬 Gmail Node – Envío del newsletter
 - Envía automáticamente el newsletter al correo configurado.
